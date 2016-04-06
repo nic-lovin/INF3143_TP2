@@ -15,10 +15,39 @@
  */
 package game;
 
+import game.players.Player;
+import races.Elf;
+import races.Troll;
+
 public class Main {
 
     public static void main(String[] args) {
+        Game game = Game.getInstance();
+        Logger logger = Logger.getLogger();
 
+        Player p1 = new Player("p1", new Troll());
+        Player p2 = new Player("p2", new Elf());
+
+        game.players.add(p1);
+        game.players.add(p2);
+
+        while (game.players.getAlivePlayers().size() > 1) {
+            game.newRound();
+
+            if (p1.isAlive()) {
+                p1.attack(p2);
+            }
+            if (p2.isAlive()) {
+                p2.castSpell(p1);
+            }
+        }
+
+        logger.log("Game Ended");
+
+        logger.log(p2.getStatus());
+        logger.log(p1.getStatus());
+
+        logger.showLogs();
     }
 
 }
