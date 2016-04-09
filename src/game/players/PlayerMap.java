@@ -21,6 +21,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.java.contract.Ensures;
+import com.google.java.contract.Requires;
+
 /**
  * A Map of Player in a Game.
  */
@@ -44,7 +47,13 @@ public class PlayerMap {
      * Add a new Player in the Game.
      *
      * @param player the player to add
+     *
      */
+    @Requires("(player != null) && (player.getName() != null) && !playerIsInGame(player.getName())")
+    @Ensures({
+    	"size() == old(size()) + 1",
+    	"playerIsInGame(player.getName())"
+    	})
     public void add(Player player) {
         players.put(player.getName(), player);
     }
