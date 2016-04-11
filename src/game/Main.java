@@ -30,8 +30,6 @@ public class Main {
 
         game.players.add(p1);
         game.players.add(p2);
-        
-        game.players.add(new Player("p2dds", new Troll()));
 
         while (game.players.getAlivePlayers().size() > 1) {
             game.newRound();
@@ -39,7 +37,7 @@ public class Main {
             if (p1.isAlive()) {
                 p1.attack(p2);
             }
-            if (p2.isAlive()) {
+            if (p2.isAlive() && p2.getMana() > 0) {
                 p2.castSpell(p1);
             }
         }

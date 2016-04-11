@@ -15,6 +15,8 @@
  */
 package races;
 
+import com.google.java.contract.Ensures;
+
 /**
  * The Race factory is used to get all Race instances.
  */
@@ -27,7 +29,9 @@ public class RaceFactory {
      * `elf`, `troll` or `human`
      * @return the Race singleton instance
      */
-    public static Race getRace(String raceName) {
+	//Tout client qui appelle RaceFactory::getRace(raceName) avec elf, troll ou human comme argument à la certitude de recevoir une instance de Race non nulle.
+	@Ensures("raceName.equals(\"Elf\") ? Elf.getRace() != null : raceName.equals(\"troll\") ? Troll.getRace() != null : raceName.equals(\"Human\") ? Human.getRace() != null : null")
+	public static Race getRace(String raceName) {
         switch (raceName) {
             case "elf":
                 return Elf.getRace();

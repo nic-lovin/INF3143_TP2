@@ -15,12 +15,18 @@
  */
 package game.players;
 
+import com.google.java.contract.Ensures;
+import com.google.java.contract.Invariant;
+import com.google.java.contract.Requires;
+
 import game.Logger;
 import races.Race;
 
 /**
  * A Player can attack other players by hand or by casting spells.
  */
+//Un Player a de la vie (life) et de la mana (mana) entre 0 et 500 inclusivement.
+@Invariant({"mana >= 0 && mana <= 500", "life >= 0 && life <= 500"})
 public class Player {
 
     /**
@@ -84,6 +90,8 @@ public class Player {
      * @param name player name
      * @param race player race
      */
+    //Un Player a un nom (name) et une race (race) qui ne peuvent pas etre null.
+    @Requires("name != null && race != null")
     public Player(String name, Race race) {
         super();
         this.name = name;
@@ -108,6 +116,13 @@ public class Player {
      *
      * @param target player to attack
      */
+    
+    @Requires({"target != null", // Un target ne peut pas être null.
+    	"target != this", // Un Player ne peut pas s'attaquer lui même.
+    	"isAlive()"}) // Un Player ne peut pas attaquer s'il est mort.
+    
+    // Le Player qui attaque gagne de l'expérience.
+    @Ensures("getXp() > old(getXp())")
     public void attack(Player target) {
         int dmg = 20 + this.getStrength() - target.getEndurance();
         Logger.getLogger().log("Player " + this + " attacks " + target);
@@ -120,6 +135,11 @@ public class Player {
      *
      * @param damages to inflict to this
      */
+    // damages doit être strictement suppérieur à 0.
+    @Requires("damages > 0")
+    
+    // Le Player blessé a perdu damages points de vie.
+    @Ensures({"(getLife() == (old(getLife()) - damages)) || !isAlive()"})
     public void hurt(int damages) {
         Logger.getLogger().log("Player " + this + " looses " + damages + " life points");
         life -= damages;
@@ -152,6 +172,13 @@ public class Player {
      *
      * @param target player to attack
      */
+    @Requires({"target != null", // target ne peut pas être null
+    	"target != this", // Un Player ne peut pas se lancer un sort à lui-même.
+    	"isAlive()"}) // Un Player ne peut pas lancer de sorts s'il est mort.
+    
+    // Le Player qui lance un sort perd de la mana.
+    // Le Player qui lance un sort gagne de l'expérience
+    @Ensures({"canCast(5 * this.getIntelligence() - target.getEndurance()) ? (getMana() < old(getMana())) && (getXp() > old(getXp())) : true"})
     public void castSpell(Player target) {
         int power = 5 * this.getIntelligence() - target.getEndurance();
         if (canCast(power)) {

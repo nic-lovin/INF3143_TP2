@@ -49,10 +49,12 @@ public class PlayerMap {
      * @param player the player to add
      *
      */
-    @Requires("(player != null) && (player.getName() != null) && !playerIsInGame(player.getName())")
-    @Ensures({
-    	"size() == old(size()) + 1",
-    	"playerIsInGame(player.getName())"
+    @Requires({"(player != null)", // player ne peut pas etre null
+    	"(player.getName() != null)", // player.name ne peut pas etre null
+    	"!playerIsInGame(player.getName())"}) // PlayerMap.players ne peut pas déjà contenir un Player avec le même name.
+    
+    @Ensures({"size() == old(size()) + 1", // PlayerMap.size est incrémenté de un.
+    	"playerIsInGame(player.getName())" // player est considéré en jeu playerIsInGame(player) == true
     	})
     public void add(Player player) {
         players.put(player.getName(), player);

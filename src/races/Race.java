@@ -15,6 +15,8 @@
  */
 package races;
 
+import com.google.java.contract.Ensures;
+
 /**
  * A Player race.
  *
@@ -28,6 +30,8 @@ public interface Race {
      *
      * @return base strength
      */
+	// Strength doit être une valeur entre 5 et 15 inclusivement.
+	@Ensures("result >= 5 && result <= 15")
     abstract public int baseStrength();
 
     /**
@@ -35,6 +39,8 @@ public interface Race {
      *
      * @return base endurance
      */
+	// Enduance doit être une valeur entre 5 et 15 inclusivement.
+	@Ensures({"result >= 5 && result <= 15"})
     abstract public int baseEndurance();
 
     /**
@@ -42,6 +48,8 @@ public interface Race {
      *
      * @return base intelligence
      */
+	// Intelligence doit être une valeur entre 5 et 15 inclusivement.
+	@Ensures({"result >= 5 && result <= 15"})
     abstract public int baseIntelligence();
 
 }

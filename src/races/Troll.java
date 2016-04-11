@@ -17,6 +17,9 @@ package races;
 
 import java.util.Random;
 
+import com.google.java.contract.Ensures;
+import com.google.java.contract.Invariant;
+
 /**
  * Trolls are good fighters.
  */
