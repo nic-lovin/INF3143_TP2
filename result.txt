@@ -1,0 +1,33 @@
+p1 (level: 1, xp: 0, life: 120, mana: 90)
+Game Started
+New round #1
+Player p1 attacks p2
+Player p2 looses 24 life points
+p1 gains 48 xp
+Player p2 casts a spell to p1
+Player p1 looses 48 life points
+Player p2 looses 48 mana points
+p2 gains 96 xp
+New round #2
+Player p1 attacks p2
+Player p2 looses 24 life points
+p1 gains 48 xp
+Player p2 casts a spell to p1
+Player p1 looses 48 life points
+Player p2 looses 48 mana points
+p2 gains 96 xp
+p2 reaches level 2
+New round #3
+Player p1 attacks p2
+Player p2 looses 24 life points
+p1 gains 48 xp
+p1 reaches level 2
+Player p2 cannot cast spell (out of mana)
+New round #4
+Player p1 attacks p2
+Player p2 looses 24 life points
+Player p2 is dead
+p1 gains 48 xp
+Game Ended
+p2 (level: 2, xp: 192, life: 0, mana: 24)
+p1 (level: 2, xp: 192, life: 24, mana: 90)

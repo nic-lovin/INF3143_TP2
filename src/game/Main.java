@@ -25,8 +25,8 @@ public class Main {
         Game game = Game.getInstance();
         Logger logger = Logger.getLogger();
 
-        Player p1 = new Player("p1", new Troll());
-        Player p2 = new Player("p2", new Elf());
+        Player p1 = new Player("p1", Troll.getRace());
+        Player p2 = new Player("p2", Elf.getRace());
 
         game.players.add(p1);
         game.players.add(p2);
