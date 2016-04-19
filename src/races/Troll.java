@@ -45,6 +45,8 @@ public class Troll implements Race {
     }
 
     @Override
+    // Le Troll est un cas particulier. Son intelligence sera strictement inférieure à 10.
+	@Ensures({"result < 10"})
     public int baseIntelligence() {
         Random rand = new Random();
         return rand.nextInt(9 - 5 + 1) + 5;

@@ -30,7 +30,10 @@ public class RaceFactory {
      * @return the Race singleton instance
      */
 	//Tout client qui appelle RaceFactory::getRace(raceName) avec elf, troll ou human comme argument à la certitude de recevoir une instance de Race non nulle.
-	@Ensures("raceName.equals(\"Elf\") ? Elf.getRace() != null : raceName.equals(\"troll\") ? Troll.getRace() != null : raceName.equals(\"Human\") ? Human.getRace() != null : null")
+	@Ensures("raceName == null ? true :"
+			+ "raceName.equals(\"elf\") ? result != null :"
+			+ "raceName.equals(\"troll\") ? result != null :"
+			+ "raceName.equals(\"human\") ? result != null : true")
 	public static Race getRace(String raceName) {
         switch (raceName) {
             case "elf":

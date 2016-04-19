@@ -17,6 +17,7 @@ package game;
 
 import game.players.Player;
 import races.Elf;
+import races.RaceFactory;
 import races.Troll;
 
 public class Main {
@@ -24,7 +25,7 @@ public class Main {
     public static void main(String[] args) {
         Game game = Game.getInstance();
         Logger logger = Logger.getLogger();
-
+        
         Player p1 = new Player("p1", Troll.getRace());
         Player p2 = new Player("p2", Elf.getRace());
 
