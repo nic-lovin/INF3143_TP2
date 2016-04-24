@@ -17,7 +17,6 @@ package game;
 
 import game.players.Player;
 import races.Elf;
-import races.RaceFactory;
 import races.Troll;
 
 public class Main {

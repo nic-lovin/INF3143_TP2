@@ -8,6 +8,7 @@ import races.Human;
 
 public class PlayerTest {
 
+	// On peut tuer un Player en lui otant toute sa vie.
 	@Test
 	public void testKillPlayerHurt() {
 		Player p = new Player("", Human.getRace());
@@ -22,6 +23,7 @@ public class PlayerTest {
 		assertFalse(p.isAlive());
 	}
 	
+	// Un Player passe au niveau suppérieur s'il gagne assez d'expérience.
 	@Test
 	public void testGainXpLevelUp() {
 		Player p = new Player("", Human.getRace());

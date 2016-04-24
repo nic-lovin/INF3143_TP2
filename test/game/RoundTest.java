@@ -1,19 +1,18 @@
 package game;
 
 import static org.junit.Assert.*;
-
-import java.util.Random;
-
 import org.junit.Test;
 
 public class RoundTest {
 
+	// L'appel de la méthode statique Round.getRound(round) avec round == null comme argument retourne un nouveau tour initilisé avec roundNumber == 1.
 	@Test
 	public void testGetRoundNull() {
 		Round r = Round.getRound(null);
 		assertEquals(r.getRoundNumber(), 1);
 	}
 	
+	// L'appel de la méthode statique Round.getRound(round) avec round.roundNumber == 1 comme argument retourne un nouveau tour initilisé avec roundNumber == 2.
 	@Test
 	public void testGetRoundOne() {
 		Round r = Round.getRound(null);
