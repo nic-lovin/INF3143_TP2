@@ -16,6 +16,7 @@ public class PlayerTest {
 		assertFalse(p.isAlive());
 	}
 	
+	// On peut tuer un Player directement.
 	@Test
 	public void testKillPlayerKill() {
 		Player p = new Player("", Human.getRace());
@@ -31,6 +32,7 @@ public class PlayerTest {
 		assertEquals(p.getLevel(), 2);
 	}
 	
+	// Un Player peut augmenter de niveaux deux fois de suite.
 	@Test
 	public void testGainXpLevelUpTwice() {
 		Player p = new Player("", Human.getRace());
@@ -39,6 +41,7 @@ public class PlayerTest {
 		assertEquals(p.getLevel(), 3);
 	}
 	
+	// Un Player peut augmenter de deux niveaux d'un coup.
 	@Test
 	public void testGainXpLevelUpTwiceAtOnce() {
 		Player p2 = new Player("", Human.getRace());
@@ -50,6 +53,7 @@ public class PlayerTest {
 		assertEquals(p.getLevel(), 3);
 	}
 	
+	// Un Player n'augmente pas de niveau s'il n'a pas atteint l'XP requis.
 	@Test
 	public void testGainXpNotEnough() {
 		Player p = new Player("", Human.getRace());
@@ -57,6 +61,7 @@ public class PlayerTest {
 		assertEquals(p.getLevel(), 1);
 	}
 	
+	// Un Player peut augmenter de niveau directement (sans gagner XP).
 	@Test
 	public void testLevelUpWithoutXp() {
 		Player p = new Player("", Human.getRace());

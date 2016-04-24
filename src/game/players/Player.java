@@ -185,11 +185,11 @@ public class Player {
 			"isAlive()" }) // Un Player ne peut pas lancer de sorts s'il est
 							// mort.
 
-	// Le Player qui lance un sort perd de la mana.
-	// Le Player qui lance un sort gagne de l'expérience
+	// Le Player qui lance un sort peut perdre de la mana.
+	// Le Player qui lance un sort peut gagner de l'expérience
 	@Ensures({
 			"canCast(5 * this.getIntelligence() - target.getEndurance()) ?"
-			+ "getMana() < old(getMana()) && getXp() > old(getXp()) :"
+			+ "getMana() <= old(getMana()) && getXp() >= old(getXp()) :"
 			+ "true" })
 	public void castSpell(Player target) {
 		int power = 5 * this.getIntelligence() - target.getEndurance();

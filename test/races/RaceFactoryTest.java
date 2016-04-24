@@ -29,6 +29,7 @@ public class RaceFactoryTest {
 		assertNotNull(human);
 		assertTrue(human instanceof Human);
 	}
+	
 	// Appeler la méthode RaceFactory.getRace avec autre chose que les chaînes de caractères elf, troll ou human retourne une IllegalArgumentException.
 	@Test(expected = IllegalArgumentException.class)
 	public void testGetRaceInvalid() {

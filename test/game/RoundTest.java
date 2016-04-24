@@ -22,6 +22,7 @@ public class RoundTest {
 		assertEquals(r2.getRoundNumber(), 2);
 	}
 	
+	// Test de 5000 rounds
 	@Test
 	public void testGetRound5000() {
 		Round r = Round.getRound(null);
